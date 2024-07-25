@@ -30,6 +30,7 @@ app.use(errorHandler)
 
 //routes
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/try-ai", require("./routes/tryaiRoutes"));
 
 const PORT = process.env.PORT || 8080;
 

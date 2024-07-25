@@ -18,19 +18,12 @@ const Login = () => {
 
   //handle submit
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const {data} = await axios.post("/api/v1/auth/login", {
-        email,
-        password
-      });
-      if (data.token.accessToken){
-        toast.success("User Logged in successfully")
-        localStorage.setItem("authToken",true)
-        navigate("/")
-      }
-     
-      
+      await axios.post("/api/v1/auth/login", { email, password });
+      toast.success("Login Successfully");
+      localStorage.setItem("authToken", true);
+      navigate("/");
     } catch (err) {
       console.log(error);
       if (err.response.data.error) {
@@ -42,7 +35,7 @@ const Login = () => {
         setError("");
       }, 5000);
     }
-  }
+  };
 
   return (
     <Box 
